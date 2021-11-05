@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row float-right icon-settings">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      (click)='openDialogSettings()'>
+      settings
+    </mat-icon>
+  </div>
+  <div class="container my-5">
+    <form #form="ngForm" (submit)='handleSubmit()' class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Type to search for videos, and press enter</mat-label>
+        <input type="text" [(ngModel)]="search" matInput [formControl]="searchFormControl">
+      </mat-form-field>
+    </form>
+    <div class="row px-3 mb-3">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        (click)='openDialogOrder()'>
+        sort
+      </mat-icon>
+    </div>
+    <mat-accordion *ngIf='resultVideos'>
+      <mat-expansion-panel *ngFor='let video of resultVideos' hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <a (click)="openDialogVideo(video.id.videoId)"><img height='45px' [src]="video.snippet.thumbnails.default.url" alt=""></a>
+          </mat-panel-title>
+          <mat-panel-description>
+            {{video.snippet.title}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item>Channel title: {{video.snippet.channelTitle}} </mat-list-item>
+          <mat-list-item> Video description: {{video.snippet.description}} </mat-list-item>
+          <mat-list-item> Publish date: {{video.snippet.publishTime | date}} </mat-list-item>
+        </mat-list>
+        <button mat-raised-button (click)="openDialogVideo(video.id.videoId)">Open Video</button>
+      </mat-expansion-panel>
+      <mat-paginator [length]="pageNumber" [pageSize]="pageLength" aria-label="Select page"
+        (page)='handlePaginationClick($event)' aria-label="Select page">
+      </mat-paginator>
+    </mat-accordion>
+  </div>
+</div>

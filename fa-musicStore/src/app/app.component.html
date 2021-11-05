@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <h1 class="col-md-12 y-3 p-0">FA MusicStore</h1>
+    <div class="col mb-3 p-0">
+      <form>
+        <div class="form-group">
+          <input [(ngModel)]="searchQuery" (keyup)="searchArtists()" type="text" class="form-control" placeholder="Search artist" name="search">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row artist mb-5">
+    <div class="col-md-4" *ngFor="let artist of artists">
+      <div class="card my-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <img [src]="artist.images[0].url" class="img-fluid img-thumbnail" alt="">
+            </div>
+            <div class="col-md-9">
+              <h4>
+                <a routerLink="/artists/{{artist.id}}">{{artist.name}}</a>
+              </h4>
+              <p>Followers : {{artist.followers.total}}</p>
+              <p>Popularity: {{artist.popularity}}</p>
+              <p class="mb-0">Genres : <span class="badge badge-success mr-2" *ngFor="let genre of artist.genres">{{genre}}</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>

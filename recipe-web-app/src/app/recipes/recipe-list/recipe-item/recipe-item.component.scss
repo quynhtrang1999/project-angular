@@ -1,0 +1,28 @@
+a {
+  width: 100%;
+  margin: 0;
+  color: black;
+  padding: 12px 0px;
+
+  .image {
+
+    .img-fluid{
+      min-height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .col-md-9 {
+
+    p {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+
+}
+
+.active {
+  background-color: #3379B7;
+}

@@ -1,0 +1,6 @@
+<form #form="ngForm" (submit)='onNoClick()' class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Type number result per page</mat-label>
+    <input type="text" [(ngModel)]="pageNumber" matInput [formControl]="pageNumberFormControl">
+  </mat-form-field>
+</form>

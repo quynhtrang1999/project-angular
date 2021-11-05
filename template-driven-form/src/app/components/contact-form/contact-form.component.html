@@ -1,0 +1,82 @@
+<div class="container bg-light border">
+  <h2 class="text-center mt-2">Contact us</h2>
+  <hr>
+  <form novalidate (ngSubmit)="onSubmit(form.value)" #form="ngForm" class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label for="input-name" class="col-md-3 col-form-label">Name:</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="input-name" placeholder="Your name"
+            #contactName="ngModel"
+            ngModel name="contactName" required
+          >
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactName?.errors?.required && contactName?.touched"
+      >
+        Name is required
+      </div>
+      <div class="form-group row">
+        <label for="input-email" class="col-md-3 col-form-label">Your E-mail:</label>
+        <div class="col-md-9">
+          <input type="email" class="form-control" id="input-email" placeholder="Your email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            #contactEmail="ngModel"
+            ngModel name="contactEmail" required
+          >
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactEmail?.errors?.required && contactEmail?.touched"
+      >
+        Your E-mail is required
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactEmail?.errors?.pattern && contactEmail?.dirty"
+      >
+        Invalid email
+      </div>
+      <div class="form-group row">
+        <label for="input-phone" class="col-md-3 col-form-label">Your Phone:</label>
+        <div class="col-md-9">
+          <input type="tel" class="form-control" id="input-phone" placeholder="Your phone"
+            pattern="^0[35789]{1}[0-9]{8}$"
+            #contactPhone="ngModel"
+            ngModel name="contactPhone" required
+          >
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactPhone?.errors?.required && contactPhone?.touched"
+      >
+        Your Phone is required
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactPhone?.errors?.pattern && contactPhone?.dirty"
+      >
+        Invalid phone
+      </div>
+      <div class="form-group row">
+        <label for="input-message" class="col-md-3 col-form-label">Your message:</label>
+        <div class="col-md-9">
+          <textarea type="text" class="form-control" id="input-message" placeholder="Please enter your message here..."
+            rows="4"
+            #contactMessage="ngModel"
+            ngModel name="contactMessage" required
+          ></textarea>
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="contactMessage?.errors?.required && contactMessage?.touched"
+      >
+        Your message is required
+      </div>
+      <div class="form-group row form-btn">
+        <div class="col-md-10">
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

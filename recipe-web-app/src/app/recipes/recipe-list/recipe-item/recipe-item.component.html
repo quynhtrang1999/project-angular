@@ -1,0 +1,17 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[index]"
+  routerLinkActive="active"
+  class="d-flex list-group-item">
+  <div class="col-md-9">
+    <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
+    <p class="list-group-item-text">{{ recipe.description }}</p>
+  </div>
+  <div class="image col-md-3 text-md-right">
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-fluid"
+      style="max-height: 50px;">
+  </div>
+</a>

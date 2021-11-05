@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row card-track px-3 pb-3">
+    <div class="card mt-3 col-md-12 px-0" *ngFor="let track of tracks">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <img [src]="track.album.images[0].url" class="img-fluid img-thumbnail rounded-circle" alt="">
+          </div>
+          <div class="col-md-5">
+            <h2>{{track.name}}</h2>
+            <p>Type : {{track.type}}</p>
+            <p class="mb-0">Release date: {{track.album.release_date | date: 'dd-MM-yyyy'}}</p>
+          </div>
+          <div class="col-md-5 align-self-center">
+            <audio controls class="col">
+              <source [src]="track.preview_url">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

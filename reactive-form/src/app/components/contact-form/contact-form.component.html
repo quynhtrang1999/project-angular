@@ -1,0 +1,71 @@
+<div class="container bg-light border">
+  <h2 class="text-center mt-2">Contact us</h2>
+  <hr>
+  <form novalidate (ngSubmit)="onSubmit()" #form="ngForm" class="row justify-content-center" [formGroup]="rfContact">
+    <div class="col-md-8">
+      <div class="form-group row">
+        <label for="input-name" class="col-md-3 col-form-label">Name:</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" id="input-name" placeholder="Your name" formControlName="contactName">
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="rfContact.get('contactName')?.errors?.required && rfContact.get('contactName')?.touched"
+      >
+        Name is required
+      </div>
+      <div class="form-group row">
+        <label for="input-email" class="col-md-3 col-form-label">Your E-mail:</label>
+        <div class="col-md-8" formArrayName="contactEmail">
+          <div *ngFor="let c of contactEmail.controls; index as i">
+            <input placeholder="Your Email" [formControlName]="i" />
+            <div class="col alert alert-danger" role="alert"
+              *ngIf="c?.errors?.required && c?.touched"
+            >Your E-mail is required</div>
+            <div class="col alert alert-danger" role="alert"
+              *ngIf="c?.errors?.pattern && c?.dirty"
+            >Invalid email</div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="addEmail()">Add</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="input-phone" class="col-md-3 col-form-label">Your Phone:</label>
+        <div class="col-md-8" formArrayName="contactPhone">
+          <div *ngFor="let c of contactPhone.controls; index as i">
+            <input placeholder="Your Phone" [formControlName]="i" />
+            <div class="col alert alert-danger" role="alert"
+              *ngIf="c?.errors?.required && c?.touched"
+            >Your Phone is required</div>
+            <div class="col alert alert-danger" role="alert"
+              *ngIf="c?.errors?.pattern && c?.dirty"
+            >Invalid phone</div>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary" (click)="addPhone()">Add</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="input-message" class="col-md-3 col-form-label">Your message:</label>
+        <div class="col-md-9">
+          <textarea type="text" class="form-control" id="input-message" placeholder="Please enter your message here..."
+            rows="4"  formControlName="contactMessage"></textarea>
+        </div>
+      </div>
+      <div class="col alert alert-danger" role="alert"
+        *ngIf="rfContact.get('contactMessage')?.errors?.required && rfContact.get('contactMessage')?.touched"
+      >
+        Your message is required
+      </div>
+      <div class="form-group row form-btn">
+        <div class="col-md-10">
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

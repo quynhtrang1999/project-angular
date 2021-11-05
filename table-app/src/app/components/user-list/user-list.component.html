@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="d-flex content">
+    <h1>OrderBy</h1>
+    <select (change)="tableSort.selectSort($event)" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg">
+      <option selected>Select field to sort</option>
+      <option value="1">Id</option>
+      <option value="2">First Name</option>
+      <option value="3">Last Name</option>
+      <option value="4">Email</option>
+      <option value="5">Birthday</option>
+      <option value="6">Salary</option>
+    </select>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Birthday</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.birthday | date:"dd/MM/yyyy"}}</td>
+        <td>{{user.salary}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
